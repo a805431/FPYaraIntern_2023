@@ -1,7 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Warehouse {
+export class Product {
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -9,5 +10,11 @@ export class Warehouse {
     name: string;
 
     @Column({nullable: false, type: 'smallint'})
-    capacity: number;
+    unitsize: number;
+
+    @Column({nullable: false, type: 'decimal', precision: 12, scale: 2})
+    unitprice: number;
+
+    @Column({nullable: false, type: 'boolean'})
+    ishazardous: boolean;
 }
