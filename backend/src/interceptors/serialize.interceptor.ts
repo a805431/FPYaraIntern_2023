@@ -6,20 +6,26 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { classToPlain } from 'class-transformer';
-import { UserDto } from 'src/products/dtos/user.dto';
+import { plainToInstance } from 'class-transformer';
+
+export function Serialize(dto: any) {
+    return UseInterceptors(new SerializeInterceptor(dto));
+}
 
 export class SerializeInterceptor implements NestInterceptor{
+    constructor(private dto: any) {
+
+    }
+
     intercept(context: ExecutionContext, handler: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
-        //Runs before the request is handled
-        console.log("I'm running before the handler", context);
-        
+
         return handler.handle().pipe(
             map((data: any) => {
-                //Runs before the response is sent out
-                console.log("I'm running before the response is sent out", data);
+                return plainToInstance(this.dto, data, {
+                    excludeExtraneousValues: true,
+                });
             })
-        )
+        );
 
     }
 
