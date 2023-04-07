@@ -15,24 +15,32 @@ export class UsersController {
 
     }
 
-    @Get('/colors/:color')
-    setColor(@Param('color') color: string, @Session() session: any) {
-        session.color = color;
+    //request handler for the user to know who they are signed in as
+    @Get('whoami')
+    whoami(@Session() session: any) {
+        //if a user has signed into the app, they already have a defined use id prop inside the cookie
+        //if user is not signed in then session.userId will be undefined
+        return this.usersService.findOneBy(session.userId);
     }
 
-    @Get('/colors')
-    getColor(@Session() session: any) {
-        return session.color;
+    @Post('/signout')
+    signOut(@Session() session: any) {
+        session.userId = null;
     }
 
     @Post('/signup')
-    createUser(@Body() body: CreateUserDto) {
-        return this.authService.signup(body.email, body.password);
+    async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+        const user = await this.authService.signup(body.email, body.password);
+        //the session obj has a prop of userId
+        session.userId = user.id;
+        return user;
     }
 
     @Post('/signin')
-    signin(@Body() body: CreateUserDto) {
-        return this.authService.signin(body.email, body.password);
+    async signin(@Body() body: CreateUserDto, @Session() session: any) {
+        const user = await this.authService.signin(body.email, body.password);
+        session.userId = user.id;
+        return user;
     }
 
     @Get('/:id')
