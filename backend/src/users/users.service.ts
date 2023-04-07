@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
@@ -26,7 +26,7 @@ export class UsersService {
     async update(id: number, attrs: Partial<User>) {
         const user = await this.findOneBy(id);
         if (!user) {
-            throw new Error('User not found!');
+            throw new NotFoundException('User not found!');
         }
         Object.assign(user, attrs);
         return this.repo.save(user);
@@ -36,7 +36,7 @@ export class UsersService {
         const user = await this.findOneBy(id);
 
         if(!user) {
-            throw new Error("Cannot remove unexisting user.");
+            throw new NotFoundException("Cannot remove unexisting user.");
         }
         return this.repo.remove(user);
     }
