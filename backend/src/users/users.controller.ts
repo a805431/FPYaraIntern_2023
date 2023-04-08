@@ -1,11 +1,14 @@
 import { Body, Controller, Post, Get, Patch, Delete, 
-    Param, Query, NotFoundException, Session } from '@nestjs/common';
+    Param, Query, NotFoundException, Session, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from 'src/products/dtos/user.dto';
 import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { User } from './user.entity';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -15,12 +18,18 @@ export class UsersController {
 
     }
 
-    //request handler for the user to know who they are signed in as
-    @Get('whoami')
-    whoami(@Session() session: any) {
-        //if a user has signed into the app, they already have a defined use id prop inside the cookie
-        //if user is not signed in then session.userId will be undefined
-        return this.usersService.findOneBy(session.userId);
+    // //request handler for the user to know who they are signed in as
+    // @Get('whoami')
+    // whoami(@Session() session: any) {
+    //     //if a user has signed into the app, they already have a defined user id prop inside the cookie
+    //     //if user is not signed in then session.userId will be undefined
+    //     return this.usersService.findOneBy(session.userId);
+    // }
+
+    @Get('/whoami')
+    @UseGuards(AuthGuard)
+    whoAmI(@CurrentUser() user: string) {
+        return user;
     }
 
     @Post('/signout')
@@ -69,5 +78,4 @@ export class UsersController {
         return this.usersService.update(parseInt(id), body);
     }
 
-    
 }
