@@ -15,4 +15,12 @@ export class ProductsService {
 
         return this.repo.save(product);
     }
+
+    findOneBy(id: number) {
+        if (!id) {
+            return null;
+        }
+        return this.repo.findOneBy({ id });
+    }
+
 }

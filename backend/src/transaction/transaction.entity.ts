@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, 
         Check, CreateDateColumn, ManyToOne } from 'typeorm';
 import { User } from '../users/user.entity';
+import { Product } from '../products/product.entity';
 
 @Entity()
 @Check(`"type" = -1 OR "type" = 1`)
@@ -28,4 +29,7 @@ export class Transaction {
 
     @ManyToOne(() => User, (user) => user.transactions)
     user: User;
+
+    @ManyToOne(() => Product, (product) => product.transactions)
+    product: Product;
 }
