@@ -1,5 +1,4 @@
 import { Controller, Post, Get, Body, UseGuards } from '@nestjs/common';
-//import { CreateProductDto } from './dtos/create-product.dto';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { AuthGuard } from '../guards/auth.guard';
