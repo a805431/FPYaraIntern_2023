@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, 
-        Check, CreateDateColumn } from 'typeorm';
+        Check, CreateDateColumn, ManyToOne } from 'typeorm';
+import { User } from '../users/user.entity';
 
 @Entity()
 @Check(`"type" = -1 OR "type" = 1`)
@@ -24,4 +25,7 @@ export class Transaction {
 
     @Column({nullable: false, type: 'int4'})
     quantity: number;
+
+    @ManyToOne(() => User, (user) => user.transactions)
+    user: User;
 }

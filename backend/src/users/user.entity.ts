@@ -1,7 +1,9 @@
 import { AfterInsert, 
         AfterRemove,
         AfterUpdate,
-        Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+        Entity, Column, PrimaryGeneratedColumn,
+        OneToMany } from 'typeorm';
+import { Transaction } from 'src/transaction/transaction.entity';
 
 @Entity()
 export class User {
@@ -28,5 +30,8 @@ export class User {
     logRemove() {
         console.log("Removed User with id: ", this.id);
     }
+
+    @OneToMany(() => Transaction, (transaction) => transaction.user)
+    transactions: Transaction []
 
 }
