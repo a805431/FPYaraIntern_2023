@@ -32,6 +32,6 @@ export class User {
     }
 
     @OneToMany(() => Transaction, (transaction) => transaction.user)
-    transactions: Transaction []
+    transactions: Transaction [];
 
 }
