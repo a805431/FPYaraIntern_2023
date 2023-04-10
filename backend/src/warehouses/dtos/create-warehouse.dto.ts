@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsPositive } from 'class-validator';
+import { IsString, IsInt, IsPositive, IsOptional } from 'class-validator';
 
 export class CreateWarehouseDto {
     @IsString()
@@ -7,4 +7,8 @@ export class CreateWarehouseDto {
     @IsInt()
     @IsPositive()
     capacity: number;
+
+    @IsInt()
+    @IsOptional()
+    state?: number;
 }

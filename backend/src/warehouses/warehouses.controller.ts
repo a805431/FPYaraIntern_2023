@@ -1,16 +1,24 @@
-import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, NotFoundException,
+UseGuards } from '@nestjs/common';
+import { WarehousesService } from './warehouses.service';
 import { CreateWarehouseDto } from './dtos/create-warehouse.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('warehouses')
 export class WarehousesController {
+    constructor(private warehousesService: WarehousesService) {
+
+    }
+
     @Get()
     listWarehouses() {
         
     }
 
-    @Post() 
+    @Post()
+    @UseGuards(AuthGuard)
     createWarehouse(@Body() body: CreateWarehouseDto) {
-        console.log(body);
+        return this.warehousesService.create(body);
     }
 
     @Get('/:id')
