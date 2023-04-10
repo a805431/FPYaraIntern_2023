@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './product.entity';
+import { CreateProductDto } from './dtos/create-product.dto';
 
 @Injectable()
 export class ProductsService {
@@ -9,8 +10,8 @@ export class ProductsService {
 
     }
 
-    create(name: string, unitsize: number, unitprice: number, ishazardous: boolean) {
-        const product = this.repo.create({ name, unitsize, unitprice, ishazardous });
+    create(productDto: CreateProductDto) {
+        const product = this.repo.create(productDto);
 
         return this.repo.save(product);
     }

@@ -10,4 +10,8 @@ export class Warehouse {
 
     @Column({nullable: false, type: 'smallint'})
     capacity: number;
+
+    @Column({type: 'int4'})
+    state: number;
+
 }

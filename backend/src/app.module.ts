@@ -8,6 +8,7 @@ import { User } from './users/user.entity';
 import { Warehouse } from './warehouses/warehouse.entity';
 import { ProductsModule } from './products/products.module';
 import { Product } from './products/product.entity';
+import { TransactionModule } from './transaction/transaction.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot(
@@ -22,7 +23,7 @@ import { Product } from './products/product.entity';
     entities: [User, Warehouse, Product],
     synchronize: true,
     }
-  ), WarehousesModule, UsersModule, ProductsModule],
+  ), WarehousesModule, UsersModule, ProductsModule, TransactionModule],
   controllers: [AppController],
   providers: [AppService],
 })
