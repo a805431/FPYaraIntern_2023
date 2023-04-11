@@ -11,6 +11,7 @@ import { Product } from './products/product.entity';
 import { TransactionModule } from './transaction/transaction.module';
 import { Transaction } from './transaction/transaction.entity';
 import { ProductsInWarehousesModule } from './products-in-warehouses/products-in-warehouses.module';
+import { ProductInWarehouse } from './products-in-warehouses/products-in-warehouses.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot(
@@ -22,7 +23,7 @@ import { ProductsInWarehousesModule } from './products-in-warehouses/products-in
     schema: 'public',
     username: 'postgres',
     password: 'alice',
-    entities: [User, Warehouse, Product, Transaction],
+    entities: [User, Warehouse, Product, Transaction, ProductInWarehouse],
     synchronize: true,
     }
   ), WarehousesModule, UsersModule, ProductsModule, TransactionModule, ProductsInWarehousesModule],

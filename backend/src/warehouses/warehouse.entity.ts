@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { ProductInWarehouse } from 'src/products-in-warehouses/products-in-warehouses.entity';
 
 @Entity()
 export class Warehouse {
@@ -13,5 +14,8 @@ export class Warehouse {
 
     @Column({nullable: true, type: 'int4'})
     state: number;
+
+    @OneToMany(() => ProductInWarehouse, productInWarehouse => productInWarehouse.product)
+    productInWarehouses: ProductInWarehouse []
 
 }
