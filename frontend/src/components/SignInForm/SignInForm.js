@@ -10,7 +10,7 @@ function SignInForm() {
 
 	// test query with hardcoded email and password
   // const email = 'daniel-505@yahoo.com';
-	// const password = 'fghfdhjhjh';
+	// const password = 'fhgruefR5$hj';
 
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -32,7 +32,7 @@ function SignInForm() {
 		event.preventDefault();
     // signInUser(emailInput, passwordInput);
     // signInUser('daniel-505@yahoo.com', 'fghfdhjhjh');
-    signInUser('daniel-505@yahoo.com', 'fghfdhjhjh').unwrap().then(fulfilled => console.log(fulfilled)).catch(rejected => console.error(rejected));
+    signInUser('daniel-505@yahoo.com', 'fhgruefR5$hj').unwrap().then(fulfilled => console.log(fulfilled)).catch(rejected => console.error(rejected));
 		console.log(results.data);
   };
 
