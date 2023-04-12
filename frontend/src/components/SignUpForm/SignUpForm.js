@@ -1,4 +1,12 @@
+import { useFetchUserQuery } from "../../store";
+// import { useState } from 'react';
+
 function SignUpForm() {
+  const email = "daniel@yahoo.com";
+  const { data, error, isLoading } = useFetchUserQuery(email);
+
+  console.log(data, error, isLoading);
+
   return (
     <div>
       <form>
@@ -8,11 +16,11 @@ function SignUpForm() {
         </p>
         <label>Password</label>
         <p>
-          <input className="userName" />
+          <input className="password" />
         </p>
         <label>Confirm password</label>
         <p>
-          <input className="userName" />
+          <input className="password" />
         </p>
       </form>
     </div>

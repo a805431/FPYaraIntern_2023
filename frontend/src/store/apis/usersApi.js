@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from 'reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const usersApi = createApi({
   reducerPath: 'users',
@@ -10,17 +10,31 @@ const usersApi = createApi({
       fetchUser: builder.query({
         query: (email) => {
           return {
-            url: '/auth',
+            url: '/auth/',
             params: {
               email: email,
             },
-            method: 'GET'
+            method: 'GET',
+            mode: 'cors',
           };
         },
       }),
+      signInUser: builder.mutation({
+        query: (email, password) => {
+          return {
+            url: '/auth/signin',
+            body: {
+              email: email,
+              password: password,
+            },
+            method: 'POST',
+            mode: 'cors',
+          };
+        },
+      })
     };
   },
 });
 
-export const { useFetchUserQuery } = usersApi;
+export const { useFetchUserQuery, useSignInUserMutation } = usersApi;
 export { usersApi };
