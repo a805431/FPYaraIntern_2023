@@ -23,7 +23,7 @@ function SignInForm() {
   let content = '';
   
   const navigate = useNavigate();
-
+ 
   const handleEmailInputChange = (event) => {
     setEmailInput(event.target.value);
     console.log('Email Input: ', emailInput);
@@ -51,7 +51,8 @@ function SignInForm() {
     content = <div>{results.error.data.message}</div>;
   } else if (results.status === 'fulfilled' && results.isSuccess) {
     content = <div>Welcome, {results.data.email} !</div>;
-    navigate('/userPage', { replace: true });
+    const emailWithoutDomain = results.data.email.substring(0, results.data.email.indexOf('@'));
+    navigate('/userPage', { replace: true , state: {email: emailWithoutDomain}});
   }
 
   console.log('Response results after if statement: ', results);

@@ -1,5 +1,9 @@
+import { useLocation } from 'react-router-dom';
+
 function UserPage() {
-    return (<div><span style={{color: 'yellow', fontWeight: 'bold', fontSize: '50px'}}>Welcome, User !</span></div>);
+     const location = useLocation();
+
+    return (<div><span style={{color: 'yellow', fontWeight: 'bold', fontSize: '50px'}}>Welcome, {location.state.email} !</span></div>);
 }
 
 export default UserPage;
