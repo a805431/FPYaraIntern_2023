@@ -2,6 +2,7 @@ import { useSignInUserMutation } from '../../store';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
   // // test query with hardcoded email
@@ -20,6 +21,8 @@ function SignInForm() {
   const [signInUser, results] = useSignInUserMutation();
 
   let content = '';
+  
+  const navigate = useNavigate();
 
   const handleEmailInputChange = (event) => {
     setEmailInput(event.target.value);
@@ -48,6 +51,7 @@ function SignInForm() {
     content = <div>{results.error.data.message}</div>;
   } else if (results.status === 'fulfilled' && results.isSuccess) {
     content = <div>Welcome, {results.data.email} !</div>;
+    navigate('/userPage', { replace: true });
   }
 
   console.log('Response results after if statement: ', results);
