@@ -2,7 +2,7 @@
 Gergana's individual project
 
 - Instructions on starting the project:
-    1. The repo folder warehouse-ind-proj is to be opened in VSCode.
+    1. The repo folder warehouse-ind-proj is to be opened in VSCode. -> run npm install from the project location in the terminal to install node modules.
     2. To start the frontend: 
         - New terminal gets started in VSCode (or another separate terminal on the computer's OS) -> cd ./frontend -> run the command npm run start from the terminal
     3. To start the backend:
