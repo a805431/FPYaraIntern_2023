@@ -10,6 +10,8 @@ Gergana's individual project
  2. The project is tested by signing in with this profile.
  3. Email is written in the email field:
 ![image](https://user-images.githubusercontent.com/124030241/231799679-c271b06a-dc75-48da-b105-5b2c1b3f55c3.png)
+
+
 Please delete the last symbol of the email and enter the symbol again.
 
  5. Password is written in the password field.
