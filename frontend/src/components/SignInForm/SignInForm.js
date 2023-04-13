@@ -32,8 +32,6 @@ function SignInForm() {
 
   const handleSignInUser = (event) => {
     event.preventDefault();
-    // signInUser(emailInput, passwordInput);
-    // signInUser('daniel-505@yahoo.com', 'fghfdhjhjh');
 
     signInUser({email: 'daniel-505@yahoo.com', password: 'fhgruefR5$hj'})
       .unwrap()
