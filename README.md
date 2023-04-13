@@ -1,6 +1,13 @@
 # FPYaraIntern_2023
 Gergana's individual project
 
+- Instructions on starting the project:
+    1. The repo folder warehouse-ind-proj is to be opened in VSCode.
+    2. To start the frontend: 
+        - New terminal gets started in VSCode (or another separate terminal on the computer's OS) -> cd ./frontend -> run the command npm run start from the terminal
+    3. To start the backend:
+        - Separate new terminal tab gets started in VSCode (or another separate terminal on the computer's OS) -> cd ./frontend -> run the command npm run start:dev from the terminal 
+       
 1. This is the test user sign in data: {
 {
     "email": "daniel-505@yahoo.com",
