@@ -1,0 +1,14 @@
+html, body{
+    margin: 0;
+    /* height: 100%; */
+}
+
+.gradient-bg {
+    display: flex;
+    align-items: flex-start;
+    background: linear-gradient(to bottom right, blue, pink);
+}
+
+.custom-container{
+    max-width: "500px";
+}

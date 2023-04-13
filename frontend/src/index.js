@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { store } from './store';
 import App from './App';
 import { Provider } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const el = document.getElementById('root');
 

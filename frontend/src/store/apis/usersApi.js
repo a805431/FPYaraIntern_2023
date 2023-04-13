@@ -20,7 +20,7 @@ const usersApi = createApi({
         },
       }),
       signInUser: builder.mutation({
-        query: (email, password) => {
+        query: ({email, password}) => {
           return {
             url: '/auth/signin',
             body: {
