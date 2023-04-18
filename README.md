@@ -31,4 +31,10 @@ Please delete the last symbol of the email and enter the symbol again.
 8. Notes:
  - For the future, there will be error case validation for the redirecting.
   - There is error handling implemented but it works without redirecting the user, which I can show in the presentation.
+  Notes, added after the presentation:
+  - The frontend, albeit minimal, is responsive due to Bootstrap. The blue background of the sign-in form is a Bootstrap Container.
+  - All present CRUD operations in the project have been tested in Postman and work in the backend.
+ Snapshot of responsive component:
+ ![image](https://user-images.githubusercontent.com/124030241/232748154-95eab40d-be13-497e-8267-e5d7b3e78038.png)
+
  
