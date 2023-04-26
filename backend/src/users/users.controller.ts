@@ -7,8 +7,8 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from 'src/products/dtos/user.dto';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
-import { User } from './user.entity';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { User } from './user.entity';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -28,11 +28,12 @@ export class UsersController {
 
     @Get('/whoami')
     @UseGuards(AuthGuard)
-    whoAmI(@CurrentUser() user: string) {
+    whoAmI(@CurrentUser() user: User) { //why does it work even when user was of type string?
         return user;
     }
 
     @Post('/signout')
+    @UseGuards(AuthGuard)
     signOut(@Session() session: any) {
         session.userId = null;
     }

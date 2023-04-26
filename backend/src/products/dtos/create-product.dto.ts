@@ -6,12 +6,12 @@ export class CreateProductDto {
     name: string;
 
     @IsInt()
-    unitsize: number;
+    unitSize: number;
 
     @IsDecimal()
-    unitprice: number;
+    unitPrice: number;
 
     @IsBoolean()
-    ishazardous: boolean;
+    isHazardous: boolean;
 
 }

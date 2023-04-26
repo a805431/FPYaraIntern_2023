@@ -1,10 +1,12 @@
 import { useSignInUserMutation } from '../../store';
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom';
+import SignInForm from './SignInForm';
+import Tab from 'react-bootstrap/Tab';
+import SignUpForm from './SignUpForm';
+import { StyledTabs, StyledContainer } from './style.css';
 
-function SignInForm() {
+function SignInPage() {
   // // test query with hardcoded email
   // const email = "daniel-505@yahoo.com";
   // const { data, error, isLoading } = useFetchUserQuery(email);
@@ -21,9 +23,9 @@ function SignInForm() {
   const [signInUser, results] = useSignInUserMutation();
 
   let content = '';
-  
+
   const navigate = useNavigate();
- 
+
   const handleEmailInputChange = (event) => {
     setEmailInput(event.target.value);
     console.log('Email Input: ', emailInput);
@@ -51,38 +53,42 @@ function SignInForm() {
     content = <div>{results.error.data.message}</div>;
   } else if (results.status === 'fulfilled' && results.isSuccess) {
     content = <div>Welcome, {results.data.email} !</div>;
-    const emailWithoutDomain = results.data.email.substring(0, results.data.email.indexOf('@'));
-    navigate('/userPage', { replace: true , state: {email: emailWithoutDomain}});
+    const emailWithoutDomain = results.data.email.substring(
+      0,
+      results.data.email.indexOf('@')
+    );
+    navigate('/userPage', {
+      replace: true,
+      state: { email: emailWithoutDomain },
+    });
   }
 
   console.log('Response results after if statement: ', results);
 
   return (
-    <Container fluid="md" className="p-5 mb-4 mt-5 bg-info rounded-3">
-      <form>
-        <label>Email</label>
-        <p>
-          <input
-            className="emailInput"
-            type="text"
-            value={emailInput}
-            onChange={handleEmailInputChange}
+    <StyledContainer fluid="md" className="p-5 mb-4 mt-5 bg-info rounded-3">
+      <StyledTabs
+        defaultActiveKey="sign-in"
+        id="home-page-tabs"
+        className="mb-3"
+        justify
+      >
+        <Tab eventKey="sign-in" title="Sign In">
+          <SignInForm
+            emailInput={emailInput}
+            handleEmailInputChange={handleEmailInputChange}
+            passwordInput={passwordInput}
+            handlePasswordInputChange={handlePasswordInputChange}
+            handleSignInUser={handleSignInUser}
           />
-        </p>
-        <label>Password</label>
-        <p>
-          <input
-            className="password"
-            type="password"
-            value={passwordInput}
-            onChange={handlePasswordInputChange}
-          />
-        </p>
-        <Button onClick={handleSignInUser}>Sign In</Button>
-      </form>
-      {content}
-    </Container>
+          {content}
+        </Tab>
+        <Tab eventKey="sign-up" title="Sign Up">
+          <SignUpForm />
+        </Tab>
+      </StyledTabs>
+    </StyledContainer>
   );
 }
 
-export default SignInForm;
+export default SignInPage;

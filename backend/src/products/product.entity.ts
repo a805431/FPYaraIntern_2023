@@ -8,7 +8,7 @@ export class Product {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: false})
+    @Column({nullable: false, unique: true})
     name: string;
 
     @Column({name: "unitSize", nullable: false, type: 'smallint'})
@@ -21,7 +21,7 @@ export class Product {
     isHazardous: boolean;
 
     @OneToMany(() => Transaction, (transaction) => transaction.product)
-    transactions: Transaction [];
+    transactions: Transaction []; //remove this relationship later
 
     @OneToMany(() => ProductInWarehouse, productInWarehouse => productInWarehouse.product)
     productInWarehouses: ProductInWarehouse []
