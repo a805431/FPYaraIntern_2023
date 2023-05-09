@@ -16,18 +16,18 @@ import { ProductInWarehouse } from './products-in-warehouses/products-in-warehou
 @Module({
   imports: [TypeOrmModule.forRoot(
     {
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    database: 'warehousedb',
-    schema: 'public',
-    username: 'postgres',
-    password: 'alice',
-    entities: [User, Warehouse, Product, Transaction, ProductInWarehouse],
-    synchronize: true,
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      database: 'postgres',
+      schema: 'public',
+      username: 'postgres',
+      password: 'gergana',
+      entities: [User, Warehouse, Product, Transaction, ProductInWarehouse],
+      synchronize: true,
     }
   ), WarehousesModule, UsersModule, ProductsModule, TransactionModule, ProductsInWarehousesModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
