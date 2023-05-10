@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     margin: 0;
     /* height: 100%; */
 }
@@ -9,6 +10,6 @@ html, body{
     background: linear-gradient(to bottom right, blue, pink);
 }
 
-.custom-container{
-    max-width: "500px";
+.custom-container {
+    max-width: 500px;
 }

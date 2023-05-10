@@ -1,16 +1,17 @@
 import Nav from 'react-bootstrap/Nav';
+import { StyledNav } from './style.css';
 
 function UserNav() {
-   return (<Nav className='flex-column vertical-tabs'>
+   return (<StyledNav className='flex-column vertical-tabs'>
       <Nav.Item>
          <Nav.Item>
-            <Nav.Link>Space</Nav.Link>
+            <Nav.Link eventKey="space-tab">Space</Nav.Link>
          </Nav.Item>
          <Nav.Item>
-            <Nav.Link>Data</Nav.Link>
+            <Nav.Link eventKey="data-tab">Data</Nav.Link>
          </Nav.Item>
       </Nav.Item>
-   </Nav>);
+   </StyledNav>);
    //test push
 }
 
