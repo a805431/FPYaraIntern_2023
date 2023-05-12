@@ -13,6 +13,7 @@ function App() {
         style={{
           minHeight: '100vh',
           height: '100%',
+          paddingLeft: 0,
         }}
       >
         <Routes>

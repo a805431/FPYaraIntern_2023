@@ -7,13 +7,13 @@ import UserNav from './UserNav';
 function UserPage() {
     const location = useLocation();
 
-    return (<Container>
-        <Row>
-            <Col>
+    return (<Container style={{ margin: 0, padding: 0 }}>
+        <Row style={{ marginLeft: 0, marginRight: 0 }}>
+            <Col style={{ paddingLeft: 0 }}>
                 <UserNav />
             </Col>
             <Col>
-                <span style={{ color: 'yellow', fontWeight: 'bold', fontSize: '50px' }}>Welcome, {location.state.email} !</span>
+                <h2 style={{ color: 'yellow', fontWeight: 'bold', fontSize: '50px' }}>Welcome, {location.state.email} !</h2>
             </Col>
         </Row>
     </Container>);
